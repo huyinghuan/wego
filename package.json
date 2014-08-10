@@ -1,0 +1,29 @@
+{
+    "name": "wego",
+    "version": "0.0.1",
+    "description": "weixin api.微信接口的api实现",
+    "keywords": ["weixin", "wechat", "weixin-node"],
+    "author": "huyinghuan",
+    "homepage": "https://github.com/huyinghuan/wego",
+    "bugs": {
+        "url": "https://github.com/huyinghuan/wego/issues",
+        "email": "ec.huyinghuan@gmail.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/huyinghuan/wego.git"
+    },
+    "engines": {
+        "node" : ">=0.10"
+    },
+    "dependencies": {
+    },
+    "scripts": {
+        "prepublish": "coffee -o lib/ -c src/",
+        "prestart": "coffee -o lib/ -c src/",
+        "pretest": "coffee -o lib/ -c src/",
+        "test": "node lib/weixin.js"
+    },
+    "main": "lib/weixin.js"
+}
