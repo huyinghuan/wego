@@ -101,4 +101,18 @@ class Weixin
 
     fn(req, res, data)
 
+  sendText: ()->
+
+  sendImage: ()->
+
+  sendVoice: ()->
+
+  sendVideo: ()->
+
+  sendLocation: ()->
+
+  sendLink: ()->
+
+  sendMsg: ()->
+
 module.exports = Weixin
