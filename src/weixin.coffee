@@ -102,6 +102,7 @@ class Weixin
 
   sendMsg: (req, resp, data)->
     resp.setHeader("Content-Type", "text/xml");
+    data = data or req.wego.xml
     msg = _message.getContent data
     console.log 'sendMeg:', msg
     resp.end(msg)
