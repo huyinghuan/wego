@@ -3,7 +3,7 @@ _crypto = require 'crypto'
 _xml2js = require 'xml2js'
 events = require 'events'
 
-emitter = new events.EventEmitter()
+_message = require './message'
 
 class Weixin
   ###
@@ -58,16 +58,15 @@ class Weixin
       _xml2js.parseString buf, (err, json)->
         #处理解析错误
         if err
-          req.weixin = error: err, data: buf
+          req.wego = error: err, data: buf
           return self.parseErrorHandle(req, res)
-
-        xml = json.xml
+        xml = {}
+        #抽取出来后的字段都是长度为0的数组
+        xml[key] = value[0] for key, value of json.xml
         #数据绑定
-        req.weixin = error: false, data: xml
-        type = xml.MsgType[0]
+        req.wego = error: false, data: xml
+        type = xml.MsgType
         fnName = "parse#{type.charAt(0).toUpperCase()}#{type.substring(1)}"
-
-        console.log 'fnName', fnName
 
         #对应消息处理函数选择
         fn = options[fnName]
@@ -101,18 +100,11 @@ class Weixin
 
     fn(req, res, data)
 
-  sendText: ()->
+  sendMsg: (req, resp, data)->
+    resp.setHeader("Content-Type", "text/xml");
+    msg = _message.getContent data
+    console.log 'sendMeg:', msg
+    resp.end(msg)
 
-  sendImage: ()->
-
-  sendVoice: ()->
-
-  sendVideo: ()->
-
-  sendLocation: ()->
-
-  sendLink: ()->
-
-  sendMsg: ()->
 
 module.exports = Weixin

@@ -1,6 +1,6 @@
 {
     "name": "wego",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "weixin api.微信接口的api实现",
     "keywords": ["weixin", "wechat", "weixin-node"],
     "author": "huyinghuan",
