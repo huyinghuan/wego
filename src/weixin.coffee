@@ -2,7 +2,6 @@ _url = require 'url'
 _crypto = require 'crypto'
 _xml2js = require 'xml2js'
 events = require 'events'
-
 _message = require './message'
 
 class Weixin
@@ -104,7 +103,6 @@ class Weixin
     resp.setHeader("Content-Type", "text/xml");
     data = data or req.wego.xml
     msg = _message.getContent data
-    console.log 'sendMeg:', msg
     resp.end(msg)
 
 
